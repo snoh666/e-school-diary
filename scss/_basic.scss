@@ -1,0 +1,23 @@
+@import './variables/colors';
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 16px;
+}
+
+body {
+  font-family: 'Montserrat',
+  sans-serif;
+  background-color: $dark;
+  color: $white;
+}
+
+.site {
+  width: 100%;
+  min-height: 100vh;
+}

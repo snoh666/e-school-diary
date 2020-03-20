@@ -1,0 +1,12 @@
+.fade-up {
+  opacity: 0;
+  transform: translateY(12.5px);
+  transition: opacity .3s cubic-bezier(0.55, 0.055, 0.675, 0.19),
+    transform .4s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+}
+
+.fade-up--in {
+  pointer-events: initial;
+  opacity: 1;
+  transform: translateY(0);
+}

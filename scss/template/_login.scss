@@ -1,0 +1,22 @@
+@import '../variables/colors';
+
+.login--form__wrapper {
+  min-height: 100vh;
+}
+
+.login--form {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: space-around;
+
+  height: 200px;
+
+  label {
+    margin: 15px 0;
+  }
+
+  input {
+    border-bottom: 1px solid $bluePale;
+  }
+}
