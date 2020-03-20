@@ -19,6 +19,7 @@
         header('Location:index.php');
         exit();
       } else {
+        // I suppose there is no user with the same username
         $row = $response->fetch_assoc();
         $_SESSION['isLogged'] = true;
         $_SESSION['isAdmin'] = $row['role'] == 'admin' ? true : false;
