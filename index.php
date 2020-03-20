@@ -1,3 +1,15 @@
+<?php
+  session_start();
+
+  if (isset($_SESSION['isLogged'])) {
+    if ($_SESSION['isAdmin']) {
+      header('Location:admin.php');
+      exit();
+    }
+    header('user.php');
+    exit();
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
