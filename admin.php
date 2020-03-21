@@ -19,21 +19,30 @@
 <body>
   <div class="site">
     <header>
-      <div class="header">
+      <div class="header container">
         <h1>E-dziennik</h1>
 
-        <div class="header--user">
-        <h5>
-          Witaj, <?= $_SESSION['username'] ?>
-        </h5>
-        <form action="./logout.php" method="post">
-          <button type="submit"><span>Logout</span></button>
-        </form>
+        <div class="header__user">
+          <div class="header__user--info">
+            <h5>
+              Witaj, <?= $_SESSION['username'] ?>
+            </h5>
+          </div>
+          <div class="header__user--logout">
+            <form action="./logout.php" method="post">
+              <button type="submit"><span>Logout</span></button>
+            </form>
+          </div>
         </div>
       </div>
     </header>
-    <h1>Witaj administratorze</h1>
 
+
+    <section>
+      <div class="content container">
+        <h1>Witaj adminstartorze</h1>
+      </div>
+    </section>
   </div>
 </body>
 </html>
