@@ -37,6 +37,17 @@
           <button type="submit"><span>Login</span></button>
         </div>
       </form>
+      <?php
+        if (isset($_SESSION['login_error'])) :
+          if (!empty($_SESSION['login_error'])) :
+      ?>
+        <p class="message--error">
+          <?= $_SESSION['login_error'] ?>
+        </p>
+      <?php
+          endif;
+        endif;
+      ?>
     </div>
   </div>
 </body>

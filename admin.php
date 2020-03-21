@@ -18,7 +18,22 @@
 </head>
 <body>
   <div class="site">
+    <header>
+      <div class="header">
+        <h1>E-dziennik</h1>
+
+        <div class="header--user">
+        <h5>
+          Witaj, <?= $_SESSION['username'] ?>
+        </h5>
+        <form action="./logout.php" method="post">
+          <button type="submit"><span>Logout</span></button>
+        </form>
+        </div>
+      </div>
+    </header>
     <h1>Witaj administratorze</h1>
+
   </div>
 </body>
 </html>

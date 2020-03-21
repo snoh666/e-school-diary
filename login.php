@@ -16,6 +16,7 @@
       $response = $conn->query($sql);
 
       if (mysqli_num_rows($response) == 0) {
+        $_SESSION['login_error'] = 'Wrong username or password';
         header('Location:index.php');
         exit();
       } else {
@@ -23,6 +24,12 @@
         $row = $response->fetch_assoc();
         $_SESSION['isLogged'] = true;
         $_SESSION['isAdmin'] = $row['role'] == 'admin' ? true : false;
+        $_SESSION['username'] = $row['username'];
+        $_SESSION['login_error'] = null;
+        if ($row['role'] == 'admin') {
+          header('Location:admin.php');
+          exit();
+        }
       }
     }
   }
