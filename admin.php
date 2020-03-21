@@ -6,7 +6,7 @@
     }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -41,6 +41,35 @@
     <section>
       <div class="content container">
         <h1>Witaj adminstartorze</h1>
+        <div class="admin__content">
+          <?php
+            require_once('connect.php');
+
+            if ($conn->connect_errno !== 0) :
+              echo 'Error: '.$conn->connect_errno;
+            else :
+
+              $response = $conn->query('SELECT * FROM pupils');
+
+              while ($row = $response->fetch_assoc()) :
+          ?>
+            <div class="pupil__name">
+                <?= $row['name'].' '.$row['surname'] ?>
+            </div>
+            <div class="pupil__math">
+              <?= $row['math'] ?>
+            </div>
+            <div class="pupil__polish">
+              <?= $row['polish'] ?>
+            </div>
+            <div class="pupil__it">
+              <?= $row['informatics'] ?>
+            </div>
+          <?php
+              endwhile;
+            endif;
+          ?>
+        </div>
       </div>
     </section>
   </div>
