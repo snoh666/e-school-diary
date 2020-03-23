@@ -27,6 +27,9 @@ export default Pupil;
 
 const PupilWrapper = styled.div`
   width: 100%;
+  min-height: 2rem;
+  margin: 10px 0;
+  padding: .5rem;
   display: flex;
   flex-flow: row nowrap;
   align-items: flex-start;
