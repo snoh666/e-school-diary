@@ -24,7 +24,7 @@
 <body class="dark">
   <div class="site">
     <div class="flex__center--single login--form__wrapper">
-      <form action="./login.php" method="post" class="login--form">
+      <form action="./login.php" method="post" class="login--form fade-up" style="transition-delay: .5s;">
         <label for="username">
           <span>Username</span>
           <input type="text" name="username" id="username">
@@ -50,5 +50,6 @@
       ?>
     </div>
   </div>
+  <script src="./webpack-js/dist/bundle.js"></script>
 </body>
 </html>
