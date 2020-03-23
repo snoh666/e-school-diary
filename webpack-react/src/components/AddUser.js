@@ -22,10 +22,10 @@ const AddUser = () => {
     })
       .then(response => response.json())
       .then(value => {
-        if (value.Message) {
+        if (value.message) {
           setSentStatus(true);
-        } else if(value.Error) {
-          setErrMsg(value.Error);
+        } else if(value.error) {
+          setErrMsg(value.error);
         }
       });
   }

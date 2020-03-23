@@ -23,17 +23,17 @@
         $response = $conn->query($sql);
 
         if ($response == true) {
-          echo json_encode(['Message' => 'New pupil set properly']);
+          echo json_encode(['message' => 'New pupil set properly']);
         } else {
-          echo json_encode(['Error' => 'Something went wrong' ]);
+          echo json_encode(['error' => 'Something went wrong' ]);
         }
       }
 
     } else {
-      echo json_encode(['Error' => 'Please specify pupil props' ]);
+      echo json_encode(['error' => 'Please specify pupil props' ]);
     }
   } else {
-    echo json_encode(['Error' => 'You\'re not an admin' ]);
+    echo json_encode(['error' => 'You\'re not an admin' ]);
   }
 
 ?>
