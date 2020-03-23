@@ -11,7 +11,7 @@
       }
     });
   }, {
-    threshold: .9
+    threshold: .7
   });
 
   fadeUpElements.forEach(element => Observer.observe(element));
