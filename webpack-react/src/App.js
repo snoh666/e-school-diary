@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
 import Pupil from './components/Pupil';
 import styled from 'styled-components';
 
@@ -22,11 +24,17 @@ const App = () => {
   }, []);
 
   return (
-    <Wrapper>
-      {
-        data.length > 0 ? data.map(pupil => <Pupil key={pupil.id} {...pupil} />) : 'Loading...'
-      }
-    </Wrapper>
+    <Router basename="/e-dziennik-sbd/admin.php">
+      <Switch>
+        <Route path="/">
+          <Wrapper>
+            {data.length > 0
+              ? data.map(pupil => <Pupil key={pupil.id} {...pupil} />)
+              : "Loading..."}
+          </Wrapper>
+        </Route>
+      </Switch>
+    </Router>
   );
 };
 
