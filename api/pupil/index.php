@@ -6,13 +6,15 @@
   header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
   session_start();
 
-  if ($_SESSION['role'] == 'admin') {
-    if (isset($_POST['pupil_id'])) {
+  $pupil_props = json_decode(file_get_contents("php://input"), true);
 
-      if (isset($_POST['grades'])) {
-        $math = $_POST['grades']['math'];
-        $polish = $_POST['grades']['polish'];
-        $informatics = $_POST['grades']['it'];
+  if ($_SESSION['role'] == 'admin') {
+    if (!empty($pupil_props['pupil_id'])) {
+
+      if (!empty($pupil_props['grades'])) {
+        $math = $pupil_props['grades']['math'];
+        $polish = $pupil_props['grades']['polish'];
+        $informatics = $pupil_props['grades']['it'];
 
         if ($conn->connect_errno !== 0) {
           http_response_code(500);
