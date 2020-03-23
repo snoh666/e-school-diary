@@ -16,7 +16,7 @@
 
   <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="dark">
   <div class="site">
     <header>
       <div class="header container">
@@ -53,17 +53,19 @@
 
               while ($row = $response->fetch_assoc()) :
           ?>
-            <div class="pupil__name">
+            <div class="pupil__content" pupilId="<?= $row['id'] ?>">
+              <div class="pupil__name">
                 <?= $row['name'].' '.$row['surname'] ?>
-            </div>
-            <div class="pupil__math">
-              <?= $row['math'] ?>
-            </div>
-            <div class="pupil__polish">
-              <?= $row['polish'] ?>
-            </div>
-            <div class="pupil__it">
-              <?= $row['informatics'] ?>
+              </div>
+              <div class="pupil__grades--math">
+                <?= $row['math'] ?>
+              </div>
+              <div class="pupil__grades--polish">
+                <?= $row['polish'] ?>
+              </div>
+              <div class="pupil__grades--it">
+                <?= $row['informatics'] ?>
+              </div>
             </div>
           <?php
               endwhile;
