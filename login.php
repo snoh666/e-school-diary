@@ -23,7 +23,7 @@
         // I suppose there is no user with the same username
         $row = $response->fetch_assoc();
         $_SESSION['isLogged'] = true;
-        $_SESSION['isAdmin'] = $row['role'] == 'admin' ? true : false;
+        $_SESSION['role'] = $row['role'];
         $_SESSION['username'] = $row['username'];
         $_SESSION['login_error'] = null;
         if ($row['role'] == 'admin') {

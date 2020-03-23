@@ -1,6 +1,6 @@
 <?php
   session_start();
-    if (!$_SESSION['isAdmin'] || !$_SESSION['isLogged']) {
+    if ($_SESSION['role'] !== 'admin' || !$_SESSION['isLogged']) {
       header('Location:index.php');
       exit();
     }
@@ -41,39 +41,11 @@
     <section>
       <div class="content container">
         <h1>Witaj adminstartorze</h1>
-        <div class="admin__content">
-          <?php
-            require_once('connect.php');
-
-            if ($conn->connect_errno !== 0) :
-              echo 'Error: '.$conn->connect_errno;
-            else :
-
-              $response = $conn->query('SELECT * FROM pupils');
-
-              while ($row = $response->fetch_assoc()) :
-          ?>
-            <div class="pupil__content" pupilId="<?= $row['id'] ?>">
-              <div class="pupil__name">
-                <?= $row['name'].' '.$row['surname'] ?>
-              </div>
-              <div class="pupil__grades--math">
-                <?= $row['math'] ?>
-              </div>
-              <div class="pupil__grades--polish">
-                <?= $row['polish'] ?>
-              </div>
-              <div class="pupil__grades--it">
-                <?= $row['informatics'] ?>
-              </div>
-            </div>
-          <?php
-              endwhile;
-            endif;
-          ?>
-        </div>
+        <div id="admin-panel"></div>
       </div>
     </section>
   </div>
+
+  <script src="./webpack-react/dist/main.js"></script>
 </body>
 </html>

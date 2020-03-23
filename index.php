@@ -2,7 +2,7 @@
   session_start();
 
   if (isset($_SESSION['isLogged'])) {
-    if ($_SESSION['isAdmin']) {
+    if ($_SESSION['role'] == 'admin') {
       header('Location:admin.php');
       exit();
     }
