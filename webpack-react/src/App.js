@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { HashRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import Pupil from './components/Pupil';
 import styled from 'styled-components';
+import AddUser from './components/AddUser';
 
 const App = () => {
 
@@ -24,14 +25,21 @@ const App = () => {
   }, []);
 
   return (
-    <Router basename="/e-dziennik-sbd/admin.php">
+    <Router>
       <Switch>
-        <Route path="/">
+        <Route exact path="/">
           <Wrapper>
             {data.length > 0
               ? data.map(pupil => <Pupil key={pupil.id} {...pupil} />)
               : "Loading..."}
           </Wrapper>
+          <Link to="/user/add">Add new pupil/</Link>
+        </Route>
+        <Route exact path="/user/add">
+          <AddUser pupils={data} />
+        </Route>
+        <Route exact path="/user/edit/:id">
+
         </Route>
       </Switch>
     </Router>
