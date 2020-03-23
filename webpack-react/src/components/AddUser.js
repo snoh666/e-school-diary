@@ -1,0 +1,64 @@
+import React, {useState} from 'react'
+import { Redirect } from 'react-router-dom';
+
+const AddUser = () => {
+
+  const [name, setName] = useState("");
+  const [surname, setSurname] = useState("");
+  const [sentStatus, setSentStatus] = useState(false);
+  const [errMsg, setErrMsg] = useState('');
+
+  const sendForm = e => {
+    e.preventDefault();
+
+    fetch("http://localhost/e-dziennik-sbd/api/pupil/add/", {
+      method: "POST",
+      body: JSON.stringify({
+        pupil: {
+          name: name,
+          surname: surname,
+        },
+      }),
+    })
+      .then(response => response.json())
+      .then(value => {
+        if (value.Message) {
+          setSentStatus(true);
+        } else if(value.Error) {
+          setErrMsg(value.Error);
+        }
+      });
+  }
+
+  return sentStatus ? <Redirect exact to={{pathname: '/'}} /> : (
+    <div>
+      <p>Add user:</p>
+      <form onSubmit={sendForm} method="post">
+        <label htmlFor="name">
+          <span>Name</span>
+          <input
+            type="text"
+            name="name"
+            id="name"
+            onChange={({ target }) => setName(target.value)}
+          />
+        </label>
+        <label htmlFor="surname">
+          <span>Surname</span>
+          <input
+            type="text"
+            name="surname"
+            id="surname"
+            onChange={({ target }) => setSurname(target.value)}
+          />
+        </label>
+        <button className="squaredBorders"><span>Add</span></button>
+      </form>
+      <p style={{color: 'red'}}>
+        {errMsg}
+      </p>
+    </div>
+  );
+};
+
+export default AddUser;
