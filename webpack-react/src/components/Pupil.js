@@ -3,8 +3,6 @@ import styled from 'styled-components';
 
 const Pupil = ({id, fullname, grades}) => {
 
-  console.log(grades);
-
   return (
     <PupilWrapper>
       <FullName>
