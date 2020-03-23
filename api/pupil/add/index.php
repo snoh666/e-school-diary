@@ -6,31 +6,31 @@
   header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
   session_start();
 
+  $pupil_props = json_decode(file_get_contents("php://input"));
+
   if ($_SESSION['role'] == 'admin') {
-    if (isset($_POST['pupil'])) {
-
-      $props = json_decode($_POST['pupil'], true);
-
-      require_once('../../connect.php');
+    if (!empty($pupil_props->pupil->name) && !empty($pupil_props->pupil->surname)) {
+      $pupil = $pupil_props->pupil;
+      require_once('../../../connect.php');
 
       if ($conn->connect_errno !== 0) {
         http_response_code(500);
         echo json_encode(['erorr' => $conn->connect_errno]);
       } else {
 
-        $sql = 'INSERT INTO `pupils`(`name`, `surname`) VALUES ("'.$props['name'].'","'.$props['surname'].'")';
+        $sql = 'INSERT INTO `pupils`(`name`, `surname`) VALUES ("'.$pupil->name.'","'.$pupil->surname.'")';
 
         $response = $conn->query($sql);
 
         if ($response == true) {
-          echo json_encode(['Message'] => 'New grades set properly');
+          echo json_encode(['Message' => 'New pupil set properly']);
         } else {
           echo json_encode(['Error' => 'Something went wrong' ]);
         }
       }
 
     } else {
-      echo json_encode(['Error' => 'Please specify pupil_id' ]);
+      echo json_encode(['Error' => 'Please specify pupil props' ]);
     }
   } else {
     echo json_encode(['Error' => 'You\'re not an admin' ]);
