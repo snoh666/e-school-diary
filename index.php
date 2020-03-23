@@ -21,7 +21,7 @@
 
   <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="dark">
   <div class="site">
     <div class="flex__center--single login--form__wrapper">
       <form action="./login.php" method="post" class="login--form">
@@ -34,7 +34,7 @@
           <input type="password" name="passwd" id="passwd">
         </label>
         <div class="form__wrapper--button">
-          <button type="submit"><span>Login</span></button>
+          <button type="submit" class="squaredBorder"><span>Login</span></button>
         </div>
       </form>
       <?php
