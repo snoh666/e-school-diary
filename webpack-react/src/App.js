@@ -33,7 +33,7 @@ const App = () => {
               ? data.map(pupil => <Pupil key={pupil.id} {...pupil} />)
               : "Loading..."}
           </Wrapper>
-          <Link to="/user/add">Add new pupil/</Link>
+          <Link to="/user/add">Add new pupil</Link>
         </Route>
         <Route exact path="/user/add">
           <AddUser pupils={data} />
