@@ -3,7 +3,7 @@ import { HashRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import Pupil from './components/Pupil';
 import styled from 'styled-components';
-import AddUser from './components/AddUser';
+import AddUser from './components/AddPupil';
 
 const App = () => {
 
@@ -36,7 +36,7 @@ const App = () => {
           <Link to="/user/add">Add new pupil</Link>
         </Route>
         <Route exact path="/user/add">
-          <AddUser pupils={data} />
+          <AddPupil pupils={data} />
         </Route>
         <Route exact path="/user/edit/:id">
 
