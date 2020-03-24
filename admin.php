@@ -25,13 +25,11 @@
         <div class="header__user">
           <div class="header__user--info">
             <h5>
-              Witaj, <?= $_SESSION['username'] ?>
+              Welcome, <?= $_SESSION['username'] ?>
             </h5>
           </div>
           <div class="header__user--logout">
-            <form action="./logout.php" method="post">
-              <button type="submit"><span>Logout</span></button>
-            </form>
+              <a href="./logout.php">Logout</a>
           </div>
         </div>
       </div>
@@ -40,7 +38,6 @@
 
     <section>
       <div class="content container">
-        <h1>Witaj adminstartorze</h1>
         <div id="admin-panel"></div>
       </div>
     </section>
