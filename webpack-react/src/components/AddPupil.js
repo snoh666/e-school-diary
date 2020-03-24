@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 
 const AddUser = () => {
 
@@ -52,11 +52,12 @@ const AddUser = () => {
             onChange={({ target }) => setSurname(target.value)}
           />
         </label>
-        <button className="squaredBorders"><span>Add</span></button>
+        <p style={{ color: 'red' }}>
+          {errMsg}
+        </p>
+        <button type="submit" className="squaredBorders"><span>Add</span></button>
       </form>
-      <p style={{color: 'red'}}>
-        {errMsg}
-      </p>
+      <Link exact to="/">Go back</Link>
     </div>
   );
 };
