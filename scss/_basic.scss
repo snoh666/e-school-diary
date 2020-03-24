@@ -13,10 +13,8 @@
 body {
   font-family: 'Montserrat',
   sans-serif;
-  &.dark {
-    background-color: $dark;
-    color: $white;
-  }
+  background-color: $white;
+  color: $darkBlue;
 }
 
 .site {

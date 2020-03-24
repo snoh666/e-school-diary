@@ -3,4 +3,14 @@
   flex-flow: column nowrap;
   align-items: flex-start;
   justify-content: flex-start;
+  margin: 20px 0;
+
+  label {
+    margin: 10px 0;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
 }
