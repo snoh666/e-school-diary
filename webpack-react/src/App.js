@@ -28,11 +28,11 @@ const App = () => {
     <Router>
       <Switch>
         <Route exact path="/">
-          <Wrapper>
+          <PupilsWrapper>
             {data.length > 0
               ? data.map(pupil => <Pupil key={pupil.id} {...pupil} />)
               : "Loading..."}
-          </Wrapper>
+          </PupilsWrapper>
           <Link to="/user/add">Add new pupil</Link>
         </Route>
         <Route exact path="/user/add">
@@ -48,10 +48,19 @@ const App = () => {
 
 export default App;
 
-const Wrapper = styled.div`
+const PupilsWrapper = styled.div`
   width: 100%;
   display: flex;
   flex-flow: column nowrap;
   justify-content: flex-start;
   align-items: flex-start;
+  a {
+    color: inherit;
+    text-decoration: none;
+
+    transition: transform .3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    &:hover {
+      transform: scaleX(1.05);
+  }
 `;
