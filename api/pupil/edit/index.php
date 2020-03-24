@@ -16,17 +16,18 @@
         $polish = $pupil_props['grades']['polish'];
         $informatics = $pupil_props['grades']['it'];
 
+        require_once('../../../connect.php');
+
         if ($conn->connect_errno !== 0) {
           http_response_code(500);
           echo json_encode(['erorr' => $conn->connect_errno]);
         } else {
-          require_once('../connect.php');
 
-          $sql = 'UPDATE `pupils` SET `math`="'.$math.'",`polish`="'.$polish.'",`informatics`="'.$informatics.'" WHERE `id`="'.$_POST['pupil_id'].'"';
+          $sql = 'UPDATE `pupils` SET `math`="'.$math.'",`polish`="'.$polish.'",`informatics`="'.$informatics.'" WHERE `id`='.$pupil_props['pupil_id'];
           $response = $conn->query($sql);
 
           if ($response == true) {
-            echo json_encode(['message'] => 'New grades set properly');
+            echo json_encode(['message' => 'New grades set properly']);
           } else {
             echo json_encode(['error' => 'Something went wrong' ]);
           }
