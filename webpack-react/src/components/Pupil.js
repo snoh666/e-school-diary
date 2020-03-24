@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 const Pupil = ({id, fullname, grades}) => {
 
   return (
-    <Link exact to={`/user/edit/${id}`} style={{width: '100%'}}>
+    <Link replace to={`/user/edit/${id}`} style={{width: '100%'}}>
       <PupilWrapper>
         <FullName>
           {fullname}

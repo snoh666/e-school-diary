@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import { Redirect, Link } from 'react-router-dom';
 
-const AddUser = () => {
+const AddUser = ({setNeedUpdate}) => {
 
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
@@ -24,6 +24,7 @@ const AddUser = () => {
       .then(value => {
         if (value.message) {
           setSentStatus(true);
+          setNeedUpdate(true);
         } else if(value.error) {
           setErrMsg(value.error);
         }
@@ -57,7 +58,7 @@ const AddUser = () => {
         </p>
         <button type="submit" className="squaredBorders"><span>Add</span></button>
       </form>
-      <Link exact to="/">Go back</Link>
+      <Link replace to="/">Go back</Link>
     </div>
   );
 };
