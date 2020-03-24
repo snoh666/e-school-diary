@@ -1,25 +1,28 @@
 import React from 'react';
 import styled from 'styled-components';
+import {Link} from 'react-router-dom';
 
 const Pupil = ({id, fullname, grades}) => {
 
   return (
-    <PupilWrapper>
-      <FullName>
-        {fullname}
-      </FullName>
-      <Grades>
-        <div className="grades__math">
-          {grades.math}
-        </div>
-        <div className="grades__polish">
-          {grades.polish}
-        </div>
-        <div className="grades__informatics">
-          {grades.informatics}
-        </div>
-      </Grades>
-    </PupilWrapper>
+    <Link exact to={`/user/edit/${id}`} style={{width: '100%'}}>
+      <PupilWrapper>
+        <FullName>
+          {fullname}
+        </FullName>
+        <Grades>
+          <div className="grades__math">
+            {grades.math}
+          </div>
+          <div className="grades__polish">
+            {grades.polish}
+          </div>
+          <div className="grades__informatics">
+            {grades.informatics}
+          </div>
+        </Grades>
+      </PupilWrapper>
+    </Link>
   );
 };
 
