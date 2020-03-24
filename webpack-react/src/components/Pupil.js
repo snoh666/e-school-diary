@@ -8,17 +8,17 @@ const Pupil = ({id, fullname, grades}) => {
     <Link replace to={`/user/edit/${id}`} style={{width: '100%'}}>
       <PupilWrapper>
         <FullName>
-          {fullname}
+          <h5>{fullname}</h5>
         </FullName>
         <Grades>
           <div className="grades__math">
-            {grades.math}
+            Math: {grades.math}
           </div>
           <div className="grades__polish">
-            {grades.polish}
+            Polish: {grades.polish}
           </div>
           <div className="grades__informatics">
-            {grades.informatics}
+            Informatics: {grades.informatics}
           </div>
         </Grades>
       </PupilWrapper>
@@ -32,18 +32,27 @@ const PupilWrapper = styled.div`
   width: 100%;
   min-height: 2rem;
   margin: 10px 0;
-  padding: .5rem;
+  padding: .5rem 1rem;
+
   display: flex;
   flex-flow: row nowrap;
-  align-items: flex-start;
+  align-items: stretch;
   justify-content: flex-start;
-  border: 1px solid white;
+
+  border-bottom: 1px solid ${props => props.theme.materialIcon};
+  color: ${props => props.theme.black};
 `;
 
 const FullName = styled.div`
-  width: 200px;
-  max-width: 20%;
-  border-right: 1px solid white;
+  width: 250px;
+  max-width: 30%;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: flex-start;
+  h5{
+    font-size: 1rem;
+  }
 `;
 
 const Grades = styled.div`
@@ -52,10 +61,6 @@ const Grades = styled.div`
   grid-template-columns: repeat(3, 1fr);
 
   div {
-    border-right: 1px solid white;
-  }
-
-  &:last-child {
-    border-right: none;
+    padding: .5rem;
   }
 `;

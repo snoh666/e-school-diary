@@ -56,9 +56,11 @@ const AddUser = ({setNeedUpdate}) => {
         <p style={{ color: 'red' }}>
           {errMsg}
         </p>
-        <button type="submit" className="squaredBorders"><span>Add</span></button>
+        <p>
+          <button type="submit"><span>Add</span></button>
+          <Link replace to="/">Go back</Link>
+        </p>
       </form>
-      <Link replace to="/">Go back</Link>
     </div>
   );
 };

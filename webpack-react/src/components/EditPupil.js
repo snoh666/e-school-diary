@@ -65,39 +65,50 @@ const EditPupil = ({router, usersData, setNeedUpdate}) => {
       <h2>Edit Pupil</h2>
       <p>{matchedPupil.fullname}</p>
       <form onSubmit={sendForm}>
-        <input
-          type='text'
-          name='math'
-          id='math'
-          onChange={e => {setMathGrades(e.target.value); changedIsSaved();}}
-          value={mathGrades}
-        />
+        <label htmlFor="math">
+          <span>Math:</span>
+          <input
+            type='text'
+            name='math'
+            id='math'
+            onChange={e => { setMathGrades(e.target.value); changedIsSaved(); }}
+            value={mathGrades}
+          />
+        </label>
 
-        <input
-          type='text'
-          name='polish'
-          onChange={e => {setPolishGrades(e.target.value); changedIsSaved();}}
-          value={polishGrades}
-        />
+        <label htmlFor="polish">
+          <span>Polish:</span>
+          <input
+            type='text'
+            name='polish'
+            id='polish'
+            onChange={e => { setPolishGrades(e.target.value); changedIsSaved(); }}
+            value={polishGrades}
+          />
+        </label>
 
-        <input
-          type='text'
-          name='it'
-          onChange={e => {setItGrades(e.target.value); changedIsSaved();}}
-          value={itGrades}
-        />
+        <label htmlFor="it">
+          <span>Informatics:</span>
+          <input
+            type='text'
+            name='it'
+            id="it"
+            onChange={e => { setItGrades(e.target.value); changedIsSaved(); }}
+            value={itGrades}
+          />
+        </label>
 
-        {isSaved ? (
-          <button type='submit' disabled>
-            Save
-          </button>
-        ) : (
-          <button type='submit'>Save</button>
-        )}
+        <p>
+          {isSaved ? (
+            <button type='submit' disabled>
+              Save
+            </button>
+          ) : (
+              <button type='submit'>Save</button>
+            )}
+          <Link replace to='/'>Go Back</Link>
+        </p>
       </form>
-      <Link replace to='/'>
-        Go Back
-      </Link>
     </Wrapper>
   ) : (
     <Redirect exact to='/' />
@@ -110,4 +121,8 @@ const Wrapper = styled.div`
   width: 100%;
   display: flex;
   flex-flow: column nowrap;
+
+  button:not(:disabled) {
+    border-bottom: 1px solid ${props => props.theme.black}
+  }
 `;
