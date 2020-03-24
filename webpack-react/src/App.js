@@ -3,7 +3,7 @@ import { HashRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import Pupil from './components/Pupil';
 import styled from 'styled-components';
-import AddUser from './components/AddPupil';
+import AddPupil from './components/AddPupil';
 
 const App = () => {
 
