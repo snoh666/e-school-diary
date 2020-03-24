@@ -4,6 +4,7 @@ import { HashRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Pupil from './components/Pupil';
 import styled from 'styled-components';
 import AddPupil from './components/AddPupil';
+import EditPupil from './components/EditPupil';
 
 const App = () => {
 
@@ -38,9 +39,9 @@ const App = () => {
         <Route exact path="/user/add">
           <AddPupil pupils={data} />
         </Route>
-        <Route exact path="/user/edit/:id">
 
-        </Route>
+        <Route exact path="/user/edit/:id" component={props => <EditPupil router={props} usersData={data} />}/>
+
       </Switch>
     </Router>
   );
