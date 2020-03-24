@@ -9,39 +9,54 @@ import EditPupil from './components/EditPupil';
 const App = () => {
 
   const [data, setData] = useState([]);
+  const [needUpdate, setNeedUpdate] = useState(true);
 
   useEffect(() => {
-    fetch('http://localhost/e-dziennik-sbd/api/')
-      .then(response => response.json())
-      .then(value => {
-        try {
-          if (value.error) {
-            throw err;
+    if (needUpdate) {
+      fetch('http://localhost/e-dziennik-sbd/api/')
+        .then(response => response.json())
+        .then(value => {
+          try {
+            if (value.error) {
+              throw err;
+            }
+            setData(value);
+            setNeedUpdate(false);
+          } catch (err) {
+            console.error('Occured error', err);
           }
-          setData(value);
-        } catch (err) {
-          console.error('Occured error', err);
-        }
-      })
-  }, []);
+        });
+    }
+  }, [needUpdate]);
 
   return (
     <Router>
       <Switch>
-        <Route exact path="/">
+        <Route exact path='/'>
           <PupilsWrapper>
             {data.length > 0
               ? data.map(pupil => <Pupil key={pupil.id} {...pupil} />)
-              : "Loading..."}
+              : 'Loading...'}
           </PupilsWrapper>
-          <Link to="/user/add">Add new pupil</Link>
+          <Link replace to='/user/add'>
+            Add new pupil
+          </Link>
         </Route>
-        <Route exact path="/user/add">
-          <AddPupil pupils={data} />
+        <Route exact path='/user/add'>
+          <AddPupil pupils={data} setNeedUpdate={setNeedUpdate} />
         </Route>
 
-        <Route exact path="/user/edit/:id" component={props => <EditPupil router={props} usersData={data} />}/>
-
+        <Route
+          exact
+          path='/user/edit/:id'
+          render={props => (
+            <EditPupil
+              router={props}
+              usersData={data}
+              setNeedUpdate={setNeedUpdate}
+            />
+          )}
+        />
       </Switch>
     </Router>
   );
@@ -63,5 +78,6 @@ const PupilsWrapper = styled.div`
 
     &:hover {
       transform: scaleX(1.05);
+    }
   }
 `;
